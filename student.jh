@@ -1,0 +1,78 @@
+
+entity Student {
+    studentId Long,
+    firstName String,
+    lastName String,
+    parentGuardianFirstName String,
+    parentGuardianLastName String,
+    parentGuardianEmail String,
+    sex String,
+    birthDate Instant,
+    aadharCardNumber Long,
+    fathersIncome Double,
+    mothersIncome Double,
+    addressLine1 String,
+    addressLine2 String,
+    city String,
+    state String,
+    country String,
+    postcode String,
+    email String,
+    contact String,
+    parentContact String,
+    passportNumber String,
+    joinedDate Instant,
+    createdDate Instant,
+    modifiedDate Instant,
+    scannedSignature String,
+    accessNo String,
+    createdBy String,
+    modifiedBy String,
+    admissionNo String,
+    rollNo String,
+    isTransport Boolean
+}
+
+relationship OneToOne {
+    Student{joinedAcademicYear} to AcademicYear,
+    Student{category} to Category,
+    Student{studentStatus} to StudentStatus,
+    Student{bloodGroup} to BloodGroup,
+    Student{user} to User,
+    Student{parentUser} to User,
+    Student{institution} to Institution,
+    Student{studentClass} to Class,
+    Student{joinedClass} to Class,
+    Student{section} to Section,
+    Student{admission} to Admission,
+    Student{houses} to Houses,
+    Student{studentTransportDetails} to StudentTransportDetails
+}
+
+relationship OneToMany {
+    Student{specialCategories} to SpecialCategory,
+    Student{documents} to Document,
+    Student{studentAttendances} to StudentAttendance,
+    Student{staffModuleAttendances} to StaffModuleAttendance,
+    Student{invoices} to StudentInvoice,
+    Student{studentReceipts} to StudentReceipt,
+    Student{studentFeeRefundReceipts} to StudentFeeRefundReceipt,
+    Student{studentMarks} to StudentMark,
+    Student{reportCardGenerator} to ReportCardGenerator,
+    Student{studentIDCardGenerations} to StudentIDCardGeneration,
+    Student{studentTransportIDCardGenerations} to StudentTransportIDCardGeneration,
+    Student{studentLeaveRequisitions} to StudentLeaveRequisition,
+    Student{tCRequisitions} to TCRequisition,
+    Student{studentMovementRequisitions} to StudentMovementRequisition,
+    Student{sickRoomVisitors} to SickRoomVisitor,
+    Student{studentAppraisals} to StudentAppraisal,
+    Student{studentAssignments} to StudentAssignment,
+    Student{studentGatePassDetails} to GatePass,
+    Student{periodicAssessments} to PeriodicAssessment,
+    Student{studentExamHallAllocationDetails} to ExamHallAllocationDetails
+}
+
+paginate Student with infinite-scroll
+dto Student with mapstruct
+service Student with serviceClass
+
