@@ -1,0 +1,20 @@
+
+application {
+  config {
+    baseName educationapp
+    applicationType monolith
+    packageName com.educationmanagement
+    authenticationType jwt
+    prodDatabaseType mysql
+    clientFramework angularX
+  }
+  entities *
+}
+
+entity GeographicalLocation {
+geographicalLocationId Long
+	name String
+    geographicalLocationType INT
+    parentId INT
+    isVisible INT
+}
