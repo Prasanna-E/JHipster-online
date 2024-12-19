@@ -1,0 +1,51 @@
+/**
+ * BusRouteStop entity and its relationships.
+ */
+entity BusRouteStop {
+    busRouteStopId Long required,
+    busRouteStopName String required maxlength(255),
+    departureTime Time required,
+    arrivalTime Time required
+}
+
+/**
+ * Related entities.
+ */
+entity FeesItem {
+    feesItemId Long
+}
+
+entity Institution {
+    institutionId Long
+}
+
+entity BusRoute {
+    busRouteId Long
+}
+
+entity StudentTransportDetails {
+    studentTransportDetailsId Long
+}
+
+/**
+ * Relationships.
+ */
+relationship ManyToOne {
+    BusRouteStop{feesItem} to FeesItem,
+    BusRouteStop{institution} to Institution
+}
+
+relationship ManyToMany {
+    BusRouteStop{busRoutes} to BusRoute{busRouteStops}
+}
+
+relationship OneToMany {
+    BusRouteStop{fromStudentTransportDetails} to StudentTransportDetails{fromBusStop},
+    BusRouteStop{returnStudentTransportDetails} to StudentTransportDetails{returnBusStop}
+}
+
+/**
+ * Pagination for BusRouteStop.
+ */
+paginate BusRouteStop with pagination
+
